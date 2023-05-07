@@ -31,6 +31,9 @@ public class PriceLumber {
 
 	@Column(name = "discount_price")
 	private float discountPrice;
+	
+	@Column(name = "amount_orders")
+	private int amountOrders;
 
 	@ManyToOne
 	@JoinColumn(name = "id_category_price")
@@ -67,6 +70,15 @@ public class PriceLumber {
 	public void setDiscountPrice(float discountPrice) {
 		this.discountPrice = discountPrice;
 	}
+	
+
+	public int getAmountOrders() {
+		return amountOrders;
+	}
+
+	public void setAmountOrders(int amountOrders) {
+		this.amountOrders = amountOrders;
+	}
 
 	public CategoryPrice getCategoryPrice() {
 		return categoryPrice;
@@ -78,7 +90,7 @@ public class PriceLumber {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(categoryPrice, discountPrice, idPrice, lumber, price);
+		return Objects.hash(amountOrders, categoryPrice, discountPrice, idPrice, lumber, price);
 	}
 
 	@Override
@@ -90,10 +102,9 @@ public class PriceLumber {
 		if (getClass() != obj.getClass())
 			return false;
 		PriceLumber other = (PriceLumber) obj;
-		return Objects.equals(categoryPrice, other.categoryPrice)
+		return amountOrders == other.amountOrders && Objects.equals(categoryPrice, other.categoryPrice)
 				&& Float.floatToIntBits(discountPrice) == Float.floatToIntBits(other.discountPrice)
 				&& idPrice == other.idPrice && Objects.equals(lumber, other.lumber)
 				&& Float.floatToIntBits(price) == Float.floatToIntBits(other.price);
 	}
-
 }

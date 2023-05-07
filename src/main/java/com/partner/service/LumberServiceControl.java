@@ -16,7 +16,6 @@ import com.partner.dataObjects.Lumber;
 public class LumberServiceControl {
 	@Autowired
 	private LumberRepository lumberRepository;
-	
 	@Autowired
 	private LumberPagingRepository pagingRepository;
 
@@ -38,8 +37,8 @@ public class LumberServiceControl {
 		pagingRepository.findAll(pageable).iterator().forEachRemaining(listLumbers::add);
 		return listLumbers;
 	}
-	
-	public List<Lumber> getLumbersByPrice(float price,int currentPage ){
+
+	public List<Lumber> getLumbersByPrice(float price, int currentPage) {
 		List<Lumber> listLumbers = new ArrayList<>();
 		return listLumbers;
 	}
