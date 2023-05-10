@@ -35,10 +35,17 @@ public class PriceController {
 	@GetMapping(value ="/restApi/price/f" )
 	public List<PriceLumber> receivePricesByFilter(@RequestParam("p") int page){
 		FilterParameters filter = new FilterParameters();
-		filter.setStartPrice(0);
-		filter.setFinalPrice(110000);
-		filter.setNumberPage(page);
-		filter.setSortingByAmountOrders(true);
+		//filter.setStartPrice(0);
+		//filter.setFinalPrice(13000);
+		//filter.setNumberPage(page);
+		//filter.setCategoryLumber("Брус");
+		//filter.setNameBreed("Лиственница");
+		//filter.setSortingByAmountOrders(true);
+		//filter.setDiameter(200);
+		//filter.setWidth(150);
+		//filter.setLenght(6000);
+		//filter.setThickness(200);
+		//filter.setAvailDiscount(true);
 		return priceServiceControl.getPricesByFilter(filter);
 	}
 }

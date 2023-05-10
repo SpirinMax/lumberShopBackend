@@ -54,6 +54,7 @@ public class PriceServiceControl {
 
 	public List<PriceLumber> getPricesByFilter(FilterParameters filter) {
 		List<SearchCriteria> listCriterias = new ArrayList<>();
+		int sizeOutput = 5;
 		// Optional.ofNullable(filter.getCategoryPrice()).
 //		if (!Optional.ofNullable(filter.getCategoryPrice()).equals(null)) {
 //			listCriterias.add(new SearchCriteria("categoryPrice", ":", filter.getCategoryPrice()));
@@ -68,6 +69,39 @@ public class PriceServiceControl {
 			listCriterias.add(new SearchCriteria("price", ">", filter.getStartPrice()));
 			listCriterias.add(new SearchCriteria("price", "<", filter.getFinalPrice()));
 		}
+
+		Optional<String> categoryLumber = Optional.ofNullable(filter.getCategoryLumber());
+		Optional<String> breedWood = Optional.ofNullable(filter.getNameBreed());
+
+		if (categoryLumber.isPresent()) {
+			listCriterias.add(new SearchCriteria("categoryLumber", ":", filter.getCategoryLumber()));
+		}
+		
+		if (breedWood.isPresent()) {
+			listCriterias.add(new SearchCriteria("nameBreed", ":", filter.getNameBreed()));
+		}
+		
+		if (filter.getDiameter()!=0) {
+			listCriterias.add(new SearchCriteria("diameter", ":", filter.getDiameter()));
+		}
+		
+		if (filter.getWidth()!=0) {
+			listCriterias.add(new SearchCriteria("width", ":", filter.getWidth()));
+		}
+		
+		if (filter.getLenght()!=0) {
+			listCriterias.add(new SearchCriteria("lenght", ":", filter.getLenght()));
+		}
+		
+		if (filter.getThickness()!=0) {
+			listCriterias.add(new SearchCriteria("thickness", ":", filter.getThickness()));
+		}
+		
+		if (filter.isAvailDiscount()) {
+			listCriterias.add(new SearchCriteria("availDiscount", ":", 1));
+		}
+		
+		
 
 		List<PriceLumberSpecification> spec = new ArrayList<>();
 		for (int i = 0; i < listCriterias.size(); i++) {
@@ -91,21 +125,21 @@ public class PriceServiceControl {
 
 		switch (filter.getParameterSorting()) {
 		case ("none"):
-			pageable = PageRequest.of(filter.getNumberPage(), 2, Sort.by("idPrice"));
+			pageable = PageRequest.of(filter.getNumberPage(), sizeOutput, Sort.by("idPrice"));
 			break;
 		case ("max_price"):
-			pageable = PageRequest.of(filter.getNumberPage(), 2, Sort.by("discountPrice").descending());
+			pageable = PageRequest.of(filter.getNumberPage(), sizeOutput, Sort.by("discountPrice").descending());
 			break;
 		case ("min_price"):
-			pageable = PageRequest.of(filter.getNumberPage(), 2, Sort.by("discountPrice"));
+			pageable = PageRequest.of(filter.getNumberPage(), sizeOutput, Sort.by("discountPrice"));
 			break;
 		case ("amount_orders"):
-			pageable = PageRequest.of(filter.getNumberPage(), 2, Sort.by("amountOrders").descending());
+			pageable = PageRequest.of(filter.getNumberPage(), sizeOutput, Sort.by("amountOrders").descending());
 			break;
 		default:
-			pageable = PageRequest.of(filter.getNumberPage(), 2);
+			pageable = PageRequest.of(filter.getNumberPage(), sizeOutput);
 		}
-		
+
 		priceLumberRepository.findAll(resultSpec, pageable).iterator().forEachRemaining(prices::add);
 		return prices;
 	}

@@ -9,13 +9,27 @@ public class FilterParameters {
 
 	private int numberPage;
 
+	private String categoryLumber;
+
+	private String nameBreed;
+
+	private int diameter;
+
+	private int width;
+
+	private int lenght;
+
+	private int thickness;
+	
+	private boolean availDiscount;
+
 	private boolean sortingByMinPrice;
 
 	private boolean sortingByMaxPrice;
-	
+
 	private boolean sortingByAmountOrders;
-	
-	public String getParameterSorting () {
+
+	public String getParameterSorting() {
 		String paramSort = "none";
 		if (sortingByMaxPrice) {
 			paramSort = "max_price";
@@ -83,6 +97,62 @@ public class FilterParameters {
 
 	public void setSortingByAmountOrders(boolean sortingByAmountOrders) {
 		this.sortingByAmountOrders = sortingByAmountOrders;
+	}
+
+	public String getCategoryLumber() {
+		return categoryLumber;
+	}
+
+	public void setCategoryLumber(String categoryLumber) {
+		this.categoryLumber = categoryLumber;
+	}
+
+	public String getNameBreed() {
+		return nameBreed;
+	}
+
+	public void setNameBreed(String nameBreed) {
+		this.nameBreed = nameBreed;
+	}
+
+	public int getDiameter() {
+		return diameter;
+	}
+
+	public void setDiameter(int diameter) {
+		this.diameter = diameter;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getLenght() {
+		return lenght;
+	}
+
+	public void setLenght(int lenght) {
+		this.lenght = lenght;
+	}
+
+	public int getThickness() {
+		return thickness;
+	}
+
+	public void setThickness(int thickness) {
+		this.thickness = thickness;
+	}
+
+	public boolean isAvailDiscount() {
+		return availDiscount;
+	}
+
+	public void setAvailDiscount(boolean availDiscount) {
+		this.availDiscount = availDiscount;
 	}
 
 }
