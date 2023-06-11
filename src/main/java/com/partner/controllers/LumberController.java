@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.partner.dataObjects.CategoryLumber;
 import com.partner.dataObjects.Lumber;
 import com.partner.dataObjects.ParametersLumber;
 import com.partner.service.LumberServiceControl;
@@ -16,7 +17,7 @@ import com.partner.service.ParametersLumberServiceControl;
 public class LumberController {
 	@Autowired
 	private LumberServiceControl lumberServiceControl;
-
+	
 	@Autowired
 	private ParametersLumberServiceControl parametersLumberServiceControl;
 
@@ -33,6 +34,11 @@ public class LumberController {
 	@GetMapping(value = "/restApi/lumber/getAll")
 	public List<Lumber> receiveAllLumbers(@RequestParam("p") int currentPage) {
 		return lumberServiceControl.getAllLumbers(currentPage);
+	}
+	
+	@GetMapping(value = "/restApi/lumber/category/getAll")
+	public List<CategoryLumber> receiveAllCategoriesLumbers() {
+		return parametersLumberServiceControl.getAllCategoriesLumbers();
 	}
 
 }

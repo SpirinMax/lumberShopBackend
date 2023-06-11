@@ -1,11 +1,14 @@
 package com.partner.dataObjects;
 
+import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,13 +23,15 @@ import jakarta.persistence.Table;
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Customer {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_customer")
 	private int idCustomer;
 
 	private String phone;
 
 	private String FIO;
+	
+	private String address;
 
 	@Column(name = "legal_company")
 	private boolean legalCompany;
@@ -35,12 +40,20 @@ public class Customer {
 	@Column(name = "address_company")
 	private String addressCompany;
 
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "id_customer")
 	private Set<OrderLumber> ordersLumbers = new HashSet<>();
 
 	public Customer() {
 
+	}
+
+	public int getIdCustomer() {
+		return idCustomer;
+	}
+
+	public void setIdCustomer(int idCustomer) {
+		this.idCustomer = idCustomer;
 	}
 
 	public String getPhone() {
@@ -57,6 +70,14 @@ public class Customer {
 
 	public void setFIO(String fIO) {
 		FIO = fIO;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public boolean isLegalCompany() {
@@ -83,10 +104,6 @@ public class Customer {
 		this.addressCompany = addressCompany;
 	}
 
-	public int getIdCustomer() {
-		return idCustomer;
-	}
-
 	public Set<OrderLumber> getOrdersLumbers() {
 		return ordersLumbers;
 	}
@@ -95,13 +112,9 @@ public class Customer {
 		this.ordersLumbers = ordersLumbers;
 	}
 
-	public void setIdCustomer(int idCustomer) {
-		this.idCustomer = idCustomer;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(FIO, addressCompany, idCustomer, legalCompany, nameCompany, phone);
+		return Objects.hash(FIO, address, addressCompany, idCustomer, legalCompany, nameCompany, phone);
 	}
 
 	@Override
@@ -113,8 +126,9 @@ public class Customer {
 		if (getClass() != obj.getClass())
 			return false;
 		Customer other = (Customer) obj;
-		return idCustomer == other.idCustomer && Objects.equals(phone, other.phone) && Objects.equals(FIO, other.FIO)
-				&& Objects.equals(addressCompany, other.addressCompany) && legalCompany == other.legalCompany
-				&& Objects.equals(nameCompany, other.nameCompany);
+		return Objects.equals(FIO, other.FIO) && Objects.equals(address, other.address)
+				&& Objects.equals(addressCompany, other.addressCompany) && idCustomer == other.idCustomer
+				&& legalCompany == other.legalCompany && Objects.equals(nameCompany, other.nameCompany)
+				&& Objects.equals(phone, other.phone);
 	}
 }

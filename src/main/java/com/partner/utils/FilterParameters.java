@@ -4,6 +4,8 @@ public class FilterParameters {
 	private float startPrice;
 
 	private float finalPrice;
+	
+	private String nameLumber;
 
 	private String categoryPrice;
 
@@ -28,6 +30,8 @@ public class FilterParameters {
 	private boolean sortingByMaxPrice;
 
 	private boolean sortingByAmountOrders;
+	
+	private boolean sortingByDiscountDesc;
 
 	public String getParameterSorting() {
 		String paramSort = "none";
@@ -41,14 +45,6 @@ public class FilterParameters {
 			paramSort = "amount_orders";
 		}
 		return paramSort;
-	}
-
-	public String getCategoryPrice() {
-		return categoryPrice;
-	}
-
-	public void setCategoryPrice(String categoryPrice) {
-		this.categoryPrice = categoryPrice;
 	}
 
 	public float getStartPrice() {
@@ -67,36 +63,28 @@ public class FilterParameters {
 		this.finalPrice = finalPrice;
 	}
 
+	public String getNameLumber() {
+		return nameLumber;
+	}
+
+	public void setNameLumber(String nameLumber) {
+		this.nameLumber = nameLumber;
+	}
+
+	public String getCategoryPrice() {
+		return categoryPrice;
+	}
+
+	public void setCategoryPrice(String categoryPrice) {
+		this.categoryPrice = categoryPrice;
+	}
+
 	public int getNumberPage() {
 		return numberPage;
 	}
 
 	public void setNumberPage(int numberPage) {
 		this.numberPage = numberPage;
-	}
-
-	public boolean isSortingByMinPrice() {
-		return sortingByMinPrice;
-	}
-
-	public void setSortingByMinPrice(boolean sortingByMinPrice) {
-		this.sortingByMinPrice = sortingByMinPrice;
-	}
-
-	public boolean isSortingByMaxPrice() {
-		return sortingByMaxPrice;
-	}
-
-	public void setSortingByMaxPrice(boolean sortingByMaxPrice) {
-		this.sortingByMaxPrice = sortingByMaxPrice;
-	}
-
-	public boolean isSortingByAmountOrders() {
-		return sortingByAmountOrders;
-	}
-
-	public void setSortingByAmountOrders(boolean sortingByAmountOrders) {
-		this.sortingByAmountOrders = sortingByAmountOrders;
 	}
 
 	public String getCategoryLumber() {
@@ -155,4 +143,46 @@ public class FilterParameters {
 		this.availDiscount = availDiscount;
 	}
 
+	public boolean isSortingByMinPrice() {
+		return sortingByMinPrice;
+	}
+
+	public void setSortingByMinPrice(boolean sortingByMinPrice) {
+		this.sortingByMinPrice = sortingByMinPrice;
+	}
+
+	public boolean isSortingByMaxPrice() {
+		return sortingByMaxPrice;
+	}
+
+	public void setSortingByMaxPrice(boolean sortingByMaxPrice) {
+		this.sortingByMaxPrice = sortingByMaxPrice;
+	}
+
+	public boolean isSortingByAmountOrders() {
+		return sortingByAmountOrders;
+	}
+
+	public void setSortingByAmountOrders(boolean sortingByAmountOrders) {
+		this.sortingByAmountOrders = sortingByAmountOrders;
+	}
+
+	public boolean isSortingByDiscountDesc() {
+		return sortingByDiscountDesc;
+	}
+
+	public void setSortingByDiscountDesc(boolean sortingByDiscountDesc) {
+		this.sortingByDiscountDesc = sortingByDiscountDesc;
+	}
+
+	@Override
+	public String toString() {
+		return "FilterParameters [startPrice=" + startPrice + ", finalPrice=" + finalPrice + ", nameLumber="
+				+ nameLumber + ", categoryPrice=" + categoryPrice + ", numberPage=" + numberPage + ", categoryLumber="
+				+ categoryLumber + ", nameBreed=" + nameBreed + ", diameter=" + diameter + ", width=" + width
+				+ ", lenght=" + lenght + ", thickness=" + thickness + ", availDiscount=" + availDiscount
+				+ ", sortingByMinPrice=" + sortingByMinPrice + ", sortingByMaxPrice=" + sortingByMaxPrice
+				+ ", sortingByAmountOrders=" + sortingByAmountOrders + ", sortingByDiscountDesc="
+				+ sortingByDiscountDesc + "]";
+	}
 }

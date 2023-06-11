@@ -20,15 +20,18 @@ import jakarta.persistence.Table;
 public class OrderLumber {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_order")
 	private int idOrder;
+	
+	@Column(name = "id_customer")
+	private int idCustomer;
 
 	@ManyToOne
 	@JoinColumn(name = "id_price")
 	private PriceLumber priceLumber;
 
-	@Column(name = "quantity_ by_price_category")
+	@Column(name = "quantity_by_price_category")
 	private double quantity;
 
 	@Column(name = "final_price")
@@ -79,6 +82,14 @@ public class OrderLumber {
 
 	public void setDateOrder(Date dateOrder) {
 		this.dateOrder = dateOrder;
+	}
+
+	public int getIdCustomer() {
+		return idCustomer;
+	}
+
+	public void setIdCustomer(int idCustomer) {
+		this.idCustomer = idCustomer;
 	}
 
 	@Override

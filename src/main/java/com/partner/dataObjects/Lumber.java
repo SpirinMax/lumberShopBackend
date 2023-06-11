@@ -29,6 +29,8 @@ public class Lumber {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_lumber_parameters")
 	private ParametersLumber parametersLumber;
+	
+	private boolean availability;
 
 	public Lumber() {
 
@@ -58,9 +60,17 @@ public class Lumber {
 		this.parametersLumber = parametersLumber;
 	}
 
+	public boolean isAvailability() {
+		return availability;
+	}
+
+	public void setAvailability(boolean availability) {
+		this.availability = availability;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(idLumber, nameLumber, parametersLumber);
+		return Objects.hash(availability, idLumber, nameLumber, parametersLumber);
 	}
 
 	@Override
@@ -72,7 +82,8 @@ public class Lumber {
 		if (getClass() != obj.getClass())
 			return false;
 		Lumber other = (Lumber) obj;
-		return idLumber == other.idLumber && Objects.equals(nameLumber, other.nameLumber)
+		return availability == other.availability && idLumber == other.idLumber
+				&& Objects.equals(nameLumber, other.nameLumber)
 				&& Objects.equals(parametersLumber, other.parametersLumber);
 	}
 }

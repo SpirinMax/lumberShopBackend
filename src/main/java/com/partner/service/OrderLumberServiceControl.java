@@ -18,8 +18,8 @@ public class OrderLumberServiceControl {
 
 	}
 
-	public void saveOrder(OrderLumber orderLumber) {
-		orderLumberRepository.save(orderLumber);
+	public OrderLumber saveOrder(OrderLumber orderLumber) {
+		return orderLumberRepository.save(orderLumber);
 	}
 
 	public OrderLumber getOrderById(int id) {

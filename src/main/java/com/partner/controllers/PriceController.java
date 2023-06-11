@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,20 +34,31 @@ public class PriceController {
 		return priceServiceControl.geAllPrice();
 	}
 	
+	@PostMapping(value = "/restApi/price")
+	public List<PriceLumber> receivePricesByFilter(@RequestBody FilterParameters filter){
+		return priceServiceControl.getPricesByFilter(filter);
+	}
+	
 	@GetMapping(value ="/restApi/price/f" )
 	public List<PriceLumber> receivePricesByFilter(@RequestParam("p") int page){
 		FilterParameters filter = new FilterParameters();
 		//filter.setStartPrice(0);
-		//filter.setFinalPrice(13000);
-		//filter.setNumberPage(page);
+		//filter.setFinalPrice(1300000);
+		filter.setNumberPage(page);
 		//filter.setCategoryLumber("Брус");
-		//filter.setNameBreed("Лиственница");
+		//filter.setNameBreed("Сосна");
 		//filter.setSortingByAmountOrders(true);
 		//filter.setDiameter(200);
 		//filter.setWidth(150);
 		//filter.setLenght(6000);
 		//filter.setThickness(200);
 		//filter.setAvailDiscount(true);
+		filter.setSortingByDiscountDesc(true);
 		return priceServiceControl.getPricesByFilter(filter);
+	}
+	
+	@GetMapping(value = "/restApi/price/test")
+	public List<CategoryPrice> test(){
+		return priceServiceControl.getCategoriesPricesWithoutDiscount();
 	}
 }
