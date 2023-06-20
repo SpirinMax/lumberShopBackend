@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th="http://www.thumeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Авторизация</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body class="index_body">
+
+
+	<div class="frame">
+		<div class="title">
+			<p>Партнер Онлайн</p>
+		</div>
+		<div class="title">
+			<p>Система редактирования контента</p>
+			<p>Введите логин и пароль</p>
+		</div>
+		<div>
+			<form action="/auth" method="post" id = "auth_form">
+				<div class="input_form">
+
+					<div>
+						<input class="input_field" type="text" id="login" name="login"
+							placeholder="Логин">
+					</div>
+					<div>
+						<input class="input_field" type="password" id="password"
+							name="password" placeholder="Пароль">
+					</div>
+					<div>
+						<button class="button" type="submit">Войти</button>
+					</div>
+
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+</body>
+
+<script src="response_server.js"> </script>
+</html>
