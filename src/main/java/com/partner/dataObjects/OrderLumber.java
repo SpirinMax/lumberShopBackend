@@ -94,7 +94,7 @@ public class OrderLumber {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(dateOrder, finalPrice, idOrder, priceLumber, quantity);
+		return Objects.hash(dateOrder, finalPrice, idCustomer, idOrder, quantity);
 	}
 
 	@Override
@@ -108,7 +108,7 @@ public class OrderLumber {
 		OrderLumber other = (OrderLumber) obj;
 		return Objects.equals(dateOrder, other.dateOrder)
 				&& Double.doubleToLongBits(finalPrice) == Double.doubleToLongBits(other.finalPrice)
-				&& idOrder == other.idOrder && Objects.equals(priceLumber, other.priceLumber)
+				&& idCustomer == other.idCustomer && idOrder == other.idOrder
 				&& Double.doubleToLongBits(quantity) == Double.doubleToLongBits(other.quantity);
 	}
 }

@@ -28,7 +28,7 @@ public class LumberController {
 
 	@GetMapping(value = "/restApi/lumber/getById")
 	public Lumber receiveLumberById(@RequestParam("id") int id) {
-		return lumberServiceControl.getLuimberById(id);
+		return lumberServiceControl.getLumberById(id);
 	}
 
 	@GetMapping(value = "/restApi/lumber/getAll")

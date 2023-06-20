@@ -20,9 +20,6 @@ import com.partner.utils.FilterParameters;
 import com.partner.utils.PriceLumberSpecification;
 import com.partner.utils.SearchCriteria;
 
-import jakarta.persistence.criteria.Expression;
-import jakarta.persistence.criteria.Order;
-
 @Service
 public class PriceServiceControl {
 	private Pageable pageable;
@@ -133,15 +130,6 @@ public class PriceServiceControl {
 			System.out.println("SPEC++");
 			spec.add(new PriceLumberSpecification(listCriterias.get(i)));
 		}
-//		PriceLumberSpecification spec1 = new PriceLumberSpecification(
-//				new SearchCriteria("categoryPrice", ":", filter.getCategoryPrice()));
-//		PriceLumberSpecification spec2 = new PriceLumberSpecification(
-//				new SearchCriteria("price", ":", filter.getCategoryPrice()));
-//		List<PriceLumber> prices = new ArrayList<>();
-
-		// priceLumberRepository.findAll(spec).iterator().forEachRemaining(prices::add);
-
-		// -----------------
 
 		for (int j = 0; j < spec.size(); j++) {
 			resultSpec = Specification.where(resultSpec).and(spec.get(j));

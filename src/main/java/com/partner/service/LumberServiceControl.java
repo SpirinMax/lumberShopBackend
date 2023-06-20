@@ -27,7 +27,7 @@ public class LumberServiceControl {
 		lumberRepository.save(lumber);
 	}
 
-	public Lumber getLuimberById(int id) {
+	public Lumber getLumberById(int id) {
 		return lumberRepository.findById(id).get();
 	}
 

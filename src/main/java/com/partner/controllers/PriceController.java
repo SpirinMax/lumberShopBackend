@@ -45,8 +45,8 @@ public class PriceController {
 		//filter.setStartPrice(0);
 		//filter.setFinalPrice(1300000);
 		filter.setNumberPage(page);
-		//filter.setCategoryLumber("Брус");
-		//filter.setNameBreed("Сосна");
+		filter.setCategoryLumber("Брус");
+		filter.setNameBreed("Сосна");
 		//filter.setSortingByAmountOrders(true);
 		//filter.setDiameter(200);
 		//filter.setWidth(150);
